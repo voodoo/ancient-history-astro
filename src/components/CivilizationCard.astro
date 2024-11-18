@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  period: string;
+  description: string;
+  image: string;
+}
+
+const { title, period, description, image } = Astro.props;
+---
+
+<div class="group relative overflow-hidden rounded-lg">
+  <div class="aspect-w-3 aspect-h-4">
+    <img
+      src={image}
+      alt={title}
+      class="h-full w-full object-cover object-center transition duration-300 group-hover:scale-110"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+    <h3 class="font-cinzel text-2xl text-ancient-gold">{title}</h3>
+    <p class="text-sm text-ancient-sand mt-1">{period}</p>
+    <p class="text-white/80 mt-2 text-sm">{description}</p>
+  </div>
+</div>

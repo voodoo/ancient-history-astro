@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CivilizationCard from '../components/CivilizationCard.astro';
+
+const civilizations = [
+  {
+    title: "Ancient Egypt",
+    period: "3100 BCE - 30 BCE",
+    description: "Land of pharaohs, pyramids, and eternal mysteries along the Nile.",
+    image: "/images/egypt.jpg"
+  },
+  {
+    title: "Ancient Greece",
+    period: "800 BCE - 146 BCE",
+    description: "Birthplace of democracy, philosophy, and classical art.",
+    image: "/images/greece.jpg"
+  },
+  {
+    title: "Roman Empire",
+    period: "27 BCE - 476 CE",
+    description: "Masters of engineering, law, and military conquest.",
+    image: "/images/rome.jpg"
+  },
+  {
+    title: "Mesopotamia",
+    period: "4500 BCE - 539 BCE",
+    description: "Cradle of civilization, writing, and urban culture.",
+    image: "/images/mesopotamia.jpg"
+  }
+];
+---
+
+<Layout title="Antiquity - Journey Through Ancient History">
+  <main>
+    <Hero />
+    
+    <section id="civilizations" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <h2 class="font-cinzel text-4xl text-ancient-gold text-center mb-16">Great Civilizations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {civilizations.map(civ => (
+          <CivilizationCard {...civ} />
+        ))}
+      </div>
+    </section>
+
+    <section id="timeline" class="bg-ancient-stone/50 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-cinzel text-4xl text-ancient-gold text-center mb-16">Historical Timeline</h2>
+        <div class="relative">
+          <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-ancient-gold/20"></div>
+          <div class="space-y-12">
+            {[
+              { year: "3100 BCE", event: "Rise of Egyptian Civilization", side: "right" },
+              { year: "2700 BCE", event: "First Pyramids Built", side: "left" },
+              { year: "1200 BCE", event: "Trojan War", side: "right" },
+              { year: "753 BCE", event: "Founding of Rome", side: "left" },
+              { year: "332 BCE", event: "Alexander's Empire", side: "right" },
+              { year: "27 BCE", event: "Roman Empire Begins", side: "left" }
+            ].map((item, index) => (
+              <div class={`flex ${item.side === 'left' ? 'flex-row-reverse' : ''} items-center justify-center`}>
+                <div class={`w-5/12 ${item.side === 'left' ? 'text-right' : ''}`}>
+                  <h3 class="font-cinzel text-ancient-gold text-xl">{item.year}</h3>
+                  <p class="text-white/80 mt-1">{item.event}</p>
+                </div>
+                <div class="w-2/12 flex justify-center">
+                  <div class="w-4 h-4 bg-ancient-gold rounded-full"></div>
+                </div>
+                <div class="w-5/12"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="explore" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <h2 class="font-cinzel text-4xl text-ancient-gold text-center mb-16">Explore More</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            title: "Ancient Wonders",
+            description: "Discover the magnificent structures that have stood the test of time.",
+            icon: "🏛️"
+          },
+          {
+            title: "Daily Life",
+            description: "Experience how ancient peoples lived, worked, and celebrated.",
+            icon: "⚱️"
+          },
+          {
+            title: "Mythology",
+            description: "Delve into the rich stories and beliefs of ancient cultures.",
+            icon: "⚔️"
+          }
+        ].map(item => (
+          <div class="bg-ancient-stone/30 p-8 rounded-lg text-center hover:bg-ancient-stone/40 transition group">
+            <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">{item.icon}</div>
+            <h3 class="font-cinzel text-xl text-ancient-gold mb-2">{item.title}</h3>
+            <p class="text-white/80">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

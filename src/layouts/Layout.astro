@@ -1,0 +1,114 @@
+---
+import '@fontsource/cinzel/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/600.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Journey through Ancient History" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-ancient-stone text-white">
+    <nav class="fixed w-full bg-ancient-stone/90 backdrop-blur-sm z-50 border-b border-ancient-gold/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a 
+            href="/" 
+            class="font-cinzel text-ancient-gold text-xl hover:text-ancient-gold/80 transition-colors duration-300"
+          >
+            Antiquity
+          </a>
+          <div class="hidden sm:flex items-center space-x-2">
+            {[
+              { href: "/#civilizations", label: "Civilizations" },
+              { href: "/#timeline", label: "Timeline" },
+              { href: "/#explore", label: "Explore" }
+            ].map((link) => (
+              <a
+                href={link.href}
+                class="px-4 py-2 rounded-full text-white hover:text-ancient-gold hover:bg-ancient-gold/10 transition-all duration-300 font-inter text-sm font-medium"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="/contact"
+              class="ml-2 px-6 py-2 bg-ancient-gold text-ancient-stone rounded-full hover:bg-ancient-gold/90 transition-colors duration-300 font-inter text-sm font-semibold"
+            >
+              Contact
+            </a>
+          </div>
+          <button
+            class="sm:hidden p-2 rounded-lg hover:bg-ancient-gold/10 transition-colors duration-300"
+            aria-label="Menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 text-ancient-gold"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <slot />
+    <footer class="bg-ancient-stone/50 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center">
+          <p class="font-cinzel text-ancient-gold text-xl mb-4">Antiquity</p>
+          <p class="text-sm text-gray-400">Journey through the ancient world</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Highlight active section in navigation
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-50% 0px',
+        threshold: 0
+      };
+
+      const observerCallback = (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+              if (link.getAttribute('href').substring(1) === entry.target.id) {
+                link.classList.add('text-ancient-gold', 'bg-ancient-gold/10');
+              } else {
+                link.classList.remove('text-ancient-gold', 'bg-ancient-gold/10');
+              }
+            });
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(observerCallback, observerOptions);
+      sections.forEach(section => observer.observe(section));
+    </script>
+  </body>
+</html>
