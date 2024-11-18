@@ -5,15 +5,10 @@ import ContactForm from '../components/ContactForm.astro';
 ---
 
 <Layout title="Contact - Antiquity">
-  <main class="relative pt-24">
-    <div class="fixed inset-0 -z-10">
-      <img
-        src="https://images.pexels.com/photos/71241/pexels-photo-71241.jpeg"
-        alt="Ancient ruins background"
-        class="w-full h-full object-cover object-center"
-      />
-      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
-    </div>
+  <div 
+    class="min-h-screen pt-16 bg-cover bg-center bg-no-repeat"
+    style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/ancient-history-astro/images/rome.jpg');"
+  >
     <ContactForm />
-  </main>
+  </div>
 </Layout>

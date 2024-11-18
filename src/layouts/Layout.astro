@@ -25,16 +25,16 @@ const { title } = Astro.props;
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <a 
-            href="/" 
+            href="/ancient-history-astro/" 
             class="font-cinzel text-ancient-gold text-xl hover:text-ancient-gold/80 transition-colors duration-300"
           >
             Antiquity
           </a>
           <div class="hidden sm:flex items-center space-x-2">
             {[
-              { href: "/#civilizations", label: "Civilizations" },
-              { href: "/#timeline", label: "Timeline" },
-              { href: "/#explore", label: "Explore" }
+              { href: "/ancient-history-astro/#civilizations", label: "Civilizations" },
+              { href: "/ancient-history-astro/#timeline", label: "Timeline" },
+              { href: "/ancient-history-astro/#explore", label: "Explore" }
             ].map((link) => (
               <a
                 href={link.href}
