@@ -3,30 +3,31 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import CivilizationCard from '../components/CivilizationCard.astro';
 
+
 const civilizations = [
   {
     title: "Ancient Egypt",
     period: "3100 BCE - 30 BCE",
     description: "Land of pharaohs, pyramids, and eternal mysteries along the Nile.",
-    image: new URL('/images/egypt.jpg', import.meta.url).href
+    image: 'egypt'
   },
   {
     title: "Ancient Greece",
     period: "800 BCE - 146 BCE",
     description: "Birthplace of democracy, philosophy, and classical art.",
-    image: new URL('/images/greece.jpg', import.meta.url).href
+    image: 'greece'
   },
   {
     title: "Roman Empire",
     period: "27 BCE - 476 CE",
     description: "Masters of engineering, law, and military conquest.",
-    image: new URL('/images/rome.jpg', import.meta.url).href
+    image: 'rome'
   },
   {
     title: "Mesopotamia",
     period: "4500 BCE - 539 BCE",
     description: "Cradle of civilization, writing, and urban culture.",
-    image: new URL('/images/mesopotamia.jpg', import.meta.url).href
+    image: 'mesopotamia'
   }
 ];
 ---

@@ -12,7 +12,7 @@ const { title, period, description, image } = Astro.props;
 <div class="group relative overflow-hidden rounded-lg">
   <div class="aspect-w-3 aspect-h-4">
     <img
-      src={image}
+      src={`/ancient-history-astro/images/${image}.jpg`}
       alt={title}
       class="h-full w-full object-cover object-center transition duration-300 group-hover:scale-110"
     />
